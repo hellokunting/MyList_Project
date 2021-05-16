@@ -1,1 +1,1 @@
-web: gunicorn mylist.wsgi
+web: gunicorn mynotes.wsgi
