@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Edit - MyList</title>
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+  </br>
+  {% if task_obj.owner == request.user %}
+  <form method="POST" class="container">
+    <!-- CSRF stands for Cross-Site Request Forgery and it's a type of Cross Site Scripting attack that can be sent from a malicious site through a visitor's browser to your server.csrf_token is a built-in protection in Django to protect against CSRF attacks -->
+    {% csrf_token %}
+    <label class="col-lg-2"></label>
+    <!-- <div class="form-group" style="padding-bottom: 20px"> -->
+    <input type="text" class="form-control" name="task" placeholder="{{task_obj.task}}" value="{{task_obj.task}}">
+    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+    <!-- </div> -->
+    <input type="hidden" name="done" value="{{task_obj.done}}">
+    </br>
+    <button type="submit" class="btn btn-primary col"
+      style="background-color:rgb(158, 112, 233); border-color: rgb(158, 112, 233); color:white">Update</button>
+  </form>
+  {% else%}
+  <p>Access Restricted. You are not allowed to visit this page.</p>
+  {% endif%}
+
+</div>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+{% endblock content %}

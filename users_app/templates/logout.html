@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+
+{% block title %}
+<title>Logout - MyList</title>
+{% endblock title %}
+
+{% block content %}
+<center>
+  <div class="container col-6 mt-5" style="font-weight:bold; background-color:white; border-radius:10px;">
+    <h1 style="padding-top:50px; font-size:large;">You have been logged out.</h1>
+    <h2 style="font-size:medium">Thank you for spending time with our service today :)</h2>
+    <p style="padding-bottom:80px"> The page will be redirected to login page in <span id="countdowntimer">10 </span>
+      Seconds</p>
+
+    <script type="text/javascript">
+      var timeleft = 10;
+      var downloadTimer = setInterval(function () {
+        timeleft--;
+        document.getElementById("countdowntimer").textContent = timeleft;
+        if (timeleft <= 0)
+          clearInterval(downloadTimer);
+      }, 1000);
+    </script>
+  </div>
+
+  <script>
+    function redirect() {
+      window.location.href = "login";
+    }
+
+    setTimeout(redirect, 10000); //2000 is equivalent to 2 seconds
+  </script>
+</center>
+{% endblock content %}
