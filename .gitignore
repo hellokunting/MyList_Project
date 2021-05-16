@@ -1,4 +1,6 @@
+.tmenv
 tmenv/
+
 bin/
 include/
 lib/
