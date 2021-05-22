@@ -6,41 +6,16 @@
 
 {% block content %}
 <style>
-  .editGreen {
-    background-color: rgb(170, 223, 135);
-    border-color: rgb(170, 223, 135);
-    color: rgb(255, 255, 255)
-  }
-
-  .deleteGrey {
-    background-color: #838383;
-    border-color: #838383;
+  * {
     color: white;
-  }
-
-  .addPurple {
-    background-color: rgb(159, 85, 255);
-    border-color: rgb(159, 85, 255);
-    color: white;
-  }
-
-  .specialP {
-    color: rgb(158, 112, 233);
+    text-decoration: none;
   }
 
   .deeper {
     color: rgb(87, 24, 189);
   }
-
-  .weightF {
-    font-weight: 900;
-    color: white;
-  }
-
-  * {
-    color: white;
-  }
 </style>
+
 <div class="container" style="padding-top: 50px; padding-bottom: 50px">
   </br>
   {% if messages%}
@@ -57,7 +32,7 @@
     {% csrf_token %}
     <center><input type="text" class="form-control col-10" name="task" placeholder="Task Name"></center>
     </br>
-    <center><button type="submit" class="btn btn-primary col-4 addPurple">Add New Task</button>
+    <center><button type="submit" class="btn col-4 addPurple">Add New Task</button>
     </center>
   </form>
   </br>
@@ -70,7 +45,7 @@
       {% if obj.done %}
       <tr class=" row" style="background-color:#c3c3f5;">
     <td class="col-5 weightF">{{ obj.task }}</td>
-    <td class="col-3"><a href="{% url 'pending_task' obj.id %}" class="deeper weightF">Completed</a></td>
+    <td class="col-3"><a href="{% url 'pending_task' obj.id %}" class="weightF decNone">Completed</a></td>
 
     <td class="col-4 "><a href="{% url 'edit_task' obj.id %}"><button type="submit"
           class="btn col-6 editGreen">Edit</button></a>
@@ -80,7 +55,7 @@
     </tr>
     <!-- if the task is not done -->
     {% else %}
-    <tr class="row" style="background-color:rgba(0, 0, 0, 0.555);">
+    <tr class="row bgBlack">
       <td class="col-5">{{ obj.task }}</td>
       <td class="col-3"><a class="specialP" href="{% url 'complete_task' obj.id %}">Not
           Completed
