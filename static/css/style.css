@@ -39,4 +39,33 @@
 
 a, a:hover, a:active, a:visited, a:focus {
   text-decoration:none;
+  color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+ }
+
+.navbar ul li a:hover {
+color:whitesmoke;
+text-decoration: none;
+}
+
+.pr1 {
+  padding-right:1rem;
+}
+
+.pW {
+  color: white;
+}
+
+.logoF {
+  font-family: 'Zen Dots', cursive;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+.haha {
+  background-image: url("https://raw.githubusercontent.com/hellokunting/MyList_Project/main/static/media/image1.jpg");
 }

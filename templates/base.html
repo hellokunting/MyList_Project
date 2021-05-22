@@ -30,48 +30,32 @@
 
   {% block title %}
   {% endblock title %}
-
-  <style>
-    .haha {
-      background-image: url("https://raw.githubusercontent.com/hellokunting/MyList_Project/main/static/media/image1.jpg");
-    }
-
-    * {
-      font-family: 'Poppins', sans-serif;
-    }
-  </style>
-
   <header>
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark mt-3" style="color: white">
+      <nav class="navbar navbar-expand-lg mt-3 pW">
         <div class="container-fluid">
-          <a class="navbar-brand" style="font-family: 'Zen Dots', cursive;">MyList</a>
+          <a class="navbar-brand logoF">MyList</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+        <div class="collapse navbar-collapse navbar-dark" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <!-- <a class="nav-link active" href="{% url 'todolist' %}">Todo</a> -->
             {% if user.is_authenticated %}
-            <p class="nav-link active"> {{ user.username}}</p>
-            <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+            <p class="nav-link pW"> {{ user.username}}</p>
+            <a class="nav-link " href="{% url 'logout' %}">Logout</a>
             {% else %}
-            <a class="nav-link" style="color: white" aria-current="page" href="{% url 'index' %}">Home</a>
-            <a class="nav-link" style="color: white" href="{% url 'login' %}" style="padding-right:1rem;">Login</a>
-
+            <a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a>
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
             <a href=" {% url 'register' %}"><button type="button" class="btn btn-primary">
                 Sign up ></button></a>
             {% endif %}
           </ul>
         </div>
         {% if user.is_authenticated %}
-
         {% else %}
-
         {% endif %}
       </nav>
     </div>
@@ -81,12 +65,8 @@
 <body class="haha img-fluid">
   {% block content %}
   {% endblock content %}
-
   <section class="banner">
   </section>
-
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
     crossorigin="anonymous"></script>
@@ -94,7 +74,6 @@
     integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
     crossorigin="anonymous"></script>
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
 </body>
 
 </html>
