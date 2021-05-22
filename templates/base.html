@@ -33,13 +33,17 @@
     .haha {
       background-image: url("https://raw.githubusercontent.com/hellokunting/MyList_Project/main/static/media/image1.jpg");
     }
+
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
   </style>
 
   <header>
-    <div class="container" style="font-family: 'Poppins', sans-serif;">
-      <nav class="navbar navbar-expand-lg navbar-light mt-3" style="background-color:tansparent;">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark mt-3" style="color: white">
         <div class="container-fluid">
-          <a class="navbar-brand" style="font-family: 'Zen Dots', cursive; color:white">MyList</a>
+          <a class="navbar-brand" style="font-family: 'Zen Dots', cursive;">MyList</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -51,20 +55,15 @@
           <ul class="navbar-nav">
             <!-- <a class="nav-link active" href="{% url 'todolist' %}">Todo</a> -->
             {% if user.is_authenticated %}
-            <p class="nav-link active" style="
-            color:white"> {{ user.username}}</p>
-            <a class="nav-link active" href="{% url 'logout' %}" style="
-            color:white;">Logout</a>
+            <p class="nav-link active"> {{ user.username}}</p>
+            <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
             {% else %}
-            <a class="nav-link" aria-current="page" href="{% url 'index' %}" style="
-              color:white">Home</a>
-            <a class="nav-link" href="{% url 'login' %}" style="padding-right:1rem;  color:white"">Login</a>
+            <a class="nav-link" style="color: white" aria-current="page" href="{% url 'index' %}">Home</a>
+            <a class="nav-link" style="color: white" href="{% url 'login' %}" style="padding-right:1rem;">Login</a>
 
             <a href=" {% url 'register' %}"><button type="button" class="btn btn-primary">
                 Sign up ></button></a>
             {% endif %}
-
-            <!-- <a class="nav-link" href="{% url 'about' %}">About</a> -->
           </ul>
         </div>
         {% if user.is_authenticated %}
@@ -77,21 +76,12 @@
   </header>
 </head>
 
-<body class="haha img-fluid" style="font-family: 'Poppins', sans-serif;">
+<body class="haha img-fluid">
   {% block content %}
   {% endblock content %}
 
   <section class="banner">
   </section>
-
-  <!-- Optional JavaScript; choose one of the two! -->
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-    crossorigin="anonymous"></script> -->
-
-
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
 

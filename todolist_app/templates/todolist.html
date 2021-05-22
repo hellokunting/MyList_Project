@@ -5,6 +5,23 @@
 {% endblock title %}
 
 {% block content %}
+<style>
+  .editGreen {
+    background-color: rgb(170, 223, 135);
+    border-color: rgb(170, 223, 135);
+    color: rgb(255, 255, 255)
+  }
+
+  .deleteGrey {
+    background-color: #838383;
+    border-color: #838383;
+    color: white;
+  }
+
+  .specialP {
+    color: rgb(158, 112, 233);
+  }
+</style>
 <div class="container" style="padding-top: 50px; padding-bottom: 50px">
   </br>
   {% if messages%}
@@ -18,10 +35,7 @@
   {% endif %}
 
   <form method="POST" class=" container">
-    <!-- CSRF stands for Cross-Site Request Forgery and it's a type of Cross Site Scripting attack that can be sent from a malicious site through a visitor's browser to your server.csrf_token is a built-in protection in Django to protect against CSRF attacks -->
     {% csrf_token %}
-
-    <!-- <div class="form-group" style="padding-bottom: 20px"> -->
     <center><input type="text" class="form-control col-10" name="task" placeholder="Task Name"></center>
     </br>
     <center><button type="submit" class="btn btn-primary col-4"
@@ -31,57 +45,48 @@
   </br>
 
   <table class="table table-hover text-center" ">
-    <!-- <thead class=" thead"> -->
-    <!-- <tr class="row" style="background-color: rgb(75, 75, 75); color:rgb(255, 255, 255); font-weight:bolder">
-      <th class="col-5">Tasks</th>
-      <th class="col-3">Status</th>
-      <th class="col-4">Modifying</th>
-    </tr> -->
-    <!-- </thead> -->
-    <tbody style="font-weight: 900; ">
+    <tbody style=" font-weight: 900; ">
       {% if all_tasks%}
       {% for obj in all_tasks %}
       <!-- if the task is done -->
       {% if obj.done %}
-      <tr class="row" style="background-color:#c3c3f5;">
-        <td class="col-5" style="font-weight:900; color:white;">{{ obj.task }}</td>
-        <td class="col-3"><a href="{% url 'pending_task' obj.id %}"
-            style="text-decoration: none; color:  rgb(87, 24, 189); color:white; font-weight:900">Completed</a></td>
+      <tr class=" row" style="background-color:#c3c3f5;">
+    <td class="col-5" style="font-weight:900; color:white;">{{ obj.task }}</td>
+    <td class="col-3"><a href="{% url 'pending_task' obj.id %}"
+        style="text-decoration: none; color:  rgb(87, 24, 189); color:white; font-weight:900">Completed</a></td>
 
-        <td class="col-4"><a href="{% url 'edit_task' obj.id %}"><button type="submit" class="btn col-6"
-              style="background-color:rgb(170, 223, 135); border-color: rgb(170, 223, 135); color:rgb(255, 255, 255)">Edit</button></a>
-          <a href="{% url 'delete_task' obj.id %}"><button type="submit" class="btn col-6 mt-2"
-              style="background-color:#838383; border-color: #838383; color:white;">
-              Delete</button></a>
-        </td>
-      </tr>
-      <!-- if the task is not done -->
-      {% else %}
-      <tr class="row" style="font-weight: 900; background-color:rgba(0, 0, 0, 0.555);">
-        <td class="col-5" style="font-weight:900; color:white;">{{ obj.task }}</td>
-        <td class="col-3"><a href="{% url 'complete_task' obj.id %}"
-            style="text-decoration: none; color: rgb(223, 203, 255);">Not Completed Yet</a></td>
-        <td class="col-4"><a href="{% url 'edit_task' obj.id %}"><button type="submit" class="btn col-6"
-              style="background-color:rgb(170, 223, 135); border-color: rgb(170, 223, 135); color:rgb(255, 255, 255)">Edit</button></a>
-          <a href="{% url 'delete_task' obj.id %}"><button type="submit" class="btn col-6 mt-2"
-              style="background-color:#838383; border-color: #838383; color:white;">
-              Delete</button></a>
-        </td>
-      </tr>
-      {% endif %}
-      {% endfor %}
-      {% endif %}
+    <td class="col-4"><a href="{% url 'edit_task' obj.id %}"><button type="submit"
+          class="btn col-6 editGreen">Edit</button></a>
+      <a href="{% url 'delete_task' obj.id %}"><button type="submit" class="btn col-6 mt-2 deleteGrey">
+          Delete</button></a>
+    </td>
+    </tr>
+    <!-- if the task is not done -->
+    {% else %}
+    <tr class="row" style="font-weight: 900; background-color:rgba(0, 0, 0, 0.555);">
+      <td class="col-5" style="font-weight:900; color:white;">{{ obj.task }}</td>
+      <td class="col-3"><a href="{% url 'complete_task' obj.id %}"
+          style="text-decoration: none; color: rgb(223, 203, 255);">Not Completed Yet</a></td>
+      <td class="col-4"><a href="{% url 'edit_task' obj.id %}"><button type="submit"
+            class="btn col-6 editGreen">Edit</button></a>
+        <a href="{% url 'delete_task' obj.id %}"><button type="submit" class="btn col-6 mt-2 deleteGrey">
+            Delete</button></a>
+      </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     </tbody>
   </table>
 
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">
-      <li class="page-item"><a class="page-link" href="?pg=1" style="text-decoration: none; color: rgb(158, 112, 233);">
+      <li class="page-item"><a class="page-link specialP" href="?pg=1">
           << </a>
       </li>
       {% if all_tasks.has_previous %}
-      <li class="page-item"><a class="page-link" href="?pg={{all_tasks.previous_page_number}}"
-          style="color: rgb(158, 112, 233);">{{all_tasks.previous_page_number}}</a></li>
+      <li class=" page-item"><a class="page-link specialP"
+          href="?pg={{all_tasks.previous_page_number}}">{{all_tasks.previous_page_number}}</a></li>
       {% endif %}
 
       <li class="page-item"><a class="page-link" href="?pg={{all_tasks.number}}"
@@ -89,12 +94,11 @@
       </li>
 
       {% if all_tasks.has_next %}
-      <li class="page-item"><a class="page-link" href="?pg={{all_tasks.next_page_number}}"
-          style="color: rgb(158, 112, 233);">{{all_tasks.next_page_number}}</a></li>
+      <li class="page-item"><a class="page-link specialP"
+          href="?pg={{all_tasks.next_page_number}}">{{all_tasks.next_page_number}}</a></li>
       {% endif %}
 
-      <li class="page-item"><a class="page-link" href="?pg={{all_tasks.paginator.num_pages}}"
-          style="color: rgb(158, 112, 233);">>></a></li>
+      <li class="page-item"><a class="page-link specialP" href="?pg={{all_tasks.paginator.num_pages}}">>></a></li>
     </ul>
   </nav>
 </div>
