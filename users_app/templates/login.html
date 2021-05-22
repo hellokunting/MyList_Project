@@ -8,10 +8,10 @@
 {% block content %}
 <div class="container">
   </br>
-  <h1 class="mt-3 col-7" style="font-weight:bolder; color:white">Log in to Your Account</h1>
+  <h1 class="mt-3 col-7 lgtitle">Log in to Your Account</h1>
   {% if messages%}
   {% for message in messages %}
-  <div class="alert alert-info alert-dismissible fade show" role="alert" style="color:white">
+  <div class="alert alert-info alert-dismissible fade show pW" role="alert">
     {{ message }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">
         &times;
@@ -22,14 +22,14 @@
   {% endfor %}
   {% endif %}
 
-  <form method="POST" class="mt-5 col-6 mb-3" style="color:white">
+  <form method="POST" class="mt-5 col-6 mb-3 pW ">
     {% csrf_token %}
     {{ form|crispy }}
     <button type="submit" class="btn btn-primary mt-3"">Login</button>
   </form>
 
-  <p class=" col-7 mb-5" style="color: rgb(255, 255, 255);">Don't have an account yet?<a href="{% url 'register' %}"
-        style="color: rgb(140, 222, 255);"> Sign up</a>
+  <p class=" col-7 mb-5 pW ">Don't have an account yet?<a href=" {% url 'register' %}"
+      style="color: rgb(140, 222, 255);"> Sign up</a>
       </p>
 </div>
 {% endblock content %}
