@@ -29,8 +29,7 @@
   <form method="POST" class="mt-5 col-6 mb-3">
     {% csrf_token %}
     {{ register_form|crispy }}
-    <button type="submit" class="btn btn-primary mt-3"
-      style="background-color:rgb(85, 130, 255); border-color: rgb(85, 130, 255);">Sign Up</button>
+    <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
   </form>
 
   <p class="col-7 mb-5" style="font-weight: lighter; padding-bottom: 40px;">Already have an

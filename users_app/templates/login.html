@@ -25,12 +25,11 @@
   <form method="POST" class="mt-5 col-6 mb-3" style="color:white">
     {% csrf_token %}
     {{ form|crispy }}
-    <button type="submit" class="btn btn-primary mt-3"
-      style="background-color:rgb(85, 130, 255); border-color: rgb(85, 130, 255);">Login</button>
+    <button type="submit" class="btn btn-primary mt-3"">Login</button>
   </form>
 
-  <p class="col-7 mb-5" style="color: rgb(255, 255, 255);">Don't have an account yet?<a href="{% url 'register' %}"
-      style="color: rgb(140, 222, 255);"> Sign up</a>
-  </p>
+  <p class=" col-7 mb-5" style="color: rgb(255, 255, 255);">Don't have an account yet?<a href="{% url 'register' %}"
+        style="color: rgb(140, 222, 255);"> Sign up</a>
+      </p>
 </div>
 {% endblock content %}
